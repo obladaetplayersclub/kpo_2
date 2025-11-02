@@ -2,10 +2,12 @@ package factory;
 
 import domain.main.Operation;
 import domain.type.OperationType;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Component
 public class OperationFactory {
     public Operation create(OperationType operationType, int bankId, double amount, LocalDate date, String description, int categoryId) throws Exception{
         if (amount < 0 ) {
