@@ -1,11 +1,12 @@
 package domain.main;
+import java.util.UUID;
 
 public class BankAccount {
     private final String name;
     private final int balance;
-    private final int id;
+    private final UUID id;
 
-    public BankAccount(String name, int balance, int id){
+    public BankAccount(String name, int balance, UUID id){
         this.name = name;
         this.balance = balance;
         this.id = id;
