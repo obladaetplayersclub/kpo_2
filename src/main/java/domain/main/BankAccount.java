@@ -1,14 +1,21 @@
 package domain.main;
+import lombok.AllArgsConstructor;
+
 import java.util.UUID;
 
+@AllArgsConstructor
 public class BankAccount {
     private final String name;
-    private final int balance;
+    private final double balance;
     private final UUID id;
 
-    public BankAccount(String name, int balance, UUID id){
-        this.name = name;
-        this.balance = balance;
-        this.id = id;
+    public UUID getId(){
+        return id;
+    }
+    public String getName(){
+        return name;
+    }
+    public double getBalance(){
+        return balance;
     }
 }

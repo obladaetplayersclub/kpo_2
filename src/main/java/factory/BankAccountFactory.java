@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Component
 public class BankAccountFactory {
-    public BankAccount create(String name, int balance) throws Exception{
+    public BankAccount create(String name, double balance) throws Exception{
         if (name == null || name.isBlank()){
             throw new Exception("Имя не может пустым");
         }
@@ -15,6 +15,13 @@ public class BankAccountFactory {
             throw new Exception("В нашем банке баланс не может быть отрицательным");
         }
         UUID id = UUID.randomUUID();
+        return new BankAccount(name, balance, id);
+    }
+
+    public BankAccount create(String name, double balance, UUID id) throws Exception{
+        if (balance < 0){
+            throw new Exception("В нашем банке баланс не может быть отрицательным");
+        }
         return new BankAccount(name, balance, id);
     }
 
