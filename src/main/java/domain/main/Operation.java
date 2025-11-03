@@ -28,5 +28,11 @@ public class Operation {
     public UUID getCI(){
         return categoryId;
     }
+    public double getAmount(){
+        return amount;
+    }
+    public OperationType getOperationType(){
+        return operationType;
+    }
 
 }
