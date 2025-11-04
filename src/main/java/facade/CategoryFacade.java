@@ -42,5 +42,14 @@ public class CategoryFacade {
         categoryRepo.deleteId(id);
     }
 
+    public void editCategory(UUID id, String newName, CategoryType newType) throws Exception {
+        Category old = categoryRepo.findId(id)
+                .orElseThrow(() -> new Exception("Категория с таким ID не найдена"));
+        if (categoryRepo.existsNameType(newName, newType)) {
+            throw new Exception("Категория с таким названием и типом уже существует!");
+        }
+        Category updated = categoryFactory.create(newType, newName, id);
+        categoryRepo.save(updated);
+    }
 
 }
