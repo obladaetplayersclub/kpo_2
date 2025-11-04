@@ -85,8 +85,9 @@ java -jar build/libs/kpo-2-0.0.1-SNAPSHOT.jar
 - **Template Method** и **Visitor** — обеспечивают гибкость ввода/вывода данных
 - **Command + Decorator** — дают расширяемый CLI-интерфейс
 
-
-
+## Вопросы
+По всем вопросам обращаться в Telegram
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white)](https://t.me/ffraud)
 
 
 
