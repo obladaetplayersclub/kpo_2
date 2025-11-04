@@ -52,7 +52,20 @@ public class CategoryImporter extends AbstrImp<CategoryImporter.Row> {
                 }
                 yield out;
             }
-            case JSON, YAML -> Readers.<Row>of(format, Row.class).readAll(in);
+            case JSON, YAML -> {
+                com.fasterxml.jackson.databind.ObjectMapper m =
+                        (format == io.Format.JSON)
+                                ? new com.fasterxml.jackson.databind.ObjectMapper()
+                                : new com.fasterxml.jackson.dataformat.yaml.YAMLMapper();
+
+                // удобства: enum'ы без учета регистра
+                m.enable(com.fasterxml.jackson.databind.MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
+
+                com.fasterxml.jackson.databind.JavaType listOfRow =
+                        m.getTypeFactory().constructCollectionType(java.util.List.class, Row.class);
+
+                yield m.readValue(in, listOfRow); // теперь это List<Row>, а не List<LinkedHashMap>
+            }
         };
     }
 
