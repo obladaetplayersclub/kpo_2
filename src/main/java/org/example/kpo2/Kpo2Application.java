@@ -20,7 +20,9 @@ public class Kpo2Application implements CommandLineRunner {
     @Autowired private CategoryFacade categoryFacade;
 
     public static void main(String[] args) {
-        SpringApplication.run(Kpo2Application.class, args);
+        var app = new SpringApplication(Kpo2Application.class);
+        app.setWebApplicationType(org.springframework.boot.WebApplicationType.NONE);
+        app.run(args);
     }
 
     @Override
