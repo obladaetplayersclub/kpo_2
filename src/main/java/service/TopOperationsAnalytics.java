@@ -33,20 +33,20 @@ public class TopOperationsAnalytics {
                 return;
             }
             if (biggestIncome != null) {
-                System.out.printf("  ➕ Доход:  %.2f | %s | %s%n",
+                System.out.printf("Доход:  %.2f | %s | %s%n",
                         biggestIncome.getAmount(),
                         biggestIncome.getDate(),
                         desc(biggestIncome.getDescription()));
             } else {
-                System.out.println("  ➕ Доход:  —");
+                System.out.println("Доход:  —");
             }
             if (biggestExpense != null) {
-                System.out.printf("  ➖ Расход: %.2f | %s | %s%n",
+                System.out.printf("Расход: %.2f | %s | %s%n",
                         biggestExpense.getAmount(),
                         biggestExpense.getDate(),
                         desc(biggestExpense.getDescription()));
             } else{
-                System.out.println("  ➖ Расход: —");
+                System.out.println("Расход: —");
             }
         }
         private static String desc(String s) {
