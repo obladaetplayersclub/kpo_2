@@ -66,6 +66,9 @@ java -jar build/libs/kpo-2-0.0.1-SNAPSHOT.jar
 Бизнес-логика зависит от абстракций, которые внедряются благодаря SpringBoot
 
 ## GRASP
+- `Kpo2Application` выполняет роль _Controller_ принимает команды пользователя и координирует запуск нужных обработчиков
+- Фасады (`BankAccountFacade`, `CategoryFacade`, `OperationFacade`) реализуют _Low Coupling/High Cohesion_. То есть, я имел в виду, что ониинкапсулируют бизнес-логику и изолируют CLI от деталей хранения
+- Фабрики (`BankAccountFactory`, `CategoryFactory`, `OperationFactory`) выступают как _Creator_: создают доменные объекты с проверками, таким образом обеспечивают корректное состояние модели
 
 ## GoF-паттерны (и repository от DDD)
 | Паттерн | Где реализован | Роль и значение |
