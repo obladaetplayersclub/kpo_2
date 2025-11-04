@@ -86,7 +86,7 @@ java -jar build/libs/kpo-2-0.0.1-SNAPSHOT.jar
 - **Command + Decorator** — дают расширяемый CLI-интерфейс
 
 ## Вопросы
-По всем вопросам обращаться в Telegram
+По всем вопросам обращаться в Telegram  
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram&logoColor=white)](https://t.me/ffraud)
 
 
