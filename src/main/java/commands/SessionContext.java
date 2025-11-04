@@ -20,4 +20,8 @@ public class SessionContext {
             throw new IllegalStateException("Сначала выберите/создайте счет!");
         }
     }
+
+    public void clearCurrentAccount() {
+        this.currentAccountId = null;
+    }
 }

@@ -40,6 +40,16 @@ public class BankAccountFacade {
         bankAccountRepo.deleteId(id);
     }
 
+    public void renameAccount(UUID id, String newName) throws Exception {
+        BankAccount acc = bankAccountRepo.findId(id).orElseThrow(() -> new Exception("Такого счета не существует!"));
+        if (bankAccountRepo.exName(newName)) {
+            throw new Exception("Счет с таким именем уже существует!");
+        }
+        BankAccount updated = bankAccountFactory.create(newName, acc.getBalance(), acc.getId());
+        bankAccountRepo.save(updated);
+    }
+
+
     public double getBalance(UUID id) throws Exception {
         Optional<BankAccount> optionalAccount = bankAccountRepo.findId(id);
         if (optionalAccount.isEmpty()) {

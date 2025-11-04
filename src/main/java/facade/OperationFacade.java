@@ -70,7 +70,7 @@ public class OperationFacade {
     public void deleteId(UUID id){
         Operation op = operationRepo.findId(id).orElseThrow(() -> new Exception("Нет подходящей операции"));
         BankAccount bankAccount = accountRepo.findId(op.getBAI()).orElseThrow(() -> new Exception("Ошибка, счет не найден"));
-        double delta = (op.getOperationType() == OperationType.EXPENSE) ? +op.getAmount() : +op.getAmount();
+        double delta = (op.getOperationType() == OperationType.EXPENSE) ? +op.getAmount() : -op.getAmount();
         workWithBalance(bankAccount, delta);
         operationRepo.deleteId(id);
     }
@@ -79,14 +79,14 @@ public class OperationFacade {
     public void edit(UUID opId, UUID newCategoryId, double newAmount, LocalDate newDate, String newDescription) {
         Operation op = operationRepo.findId(opId).orElseThrow(() -> new Exception("Нет подходящей операции"));
         BankAccount bankAccount = accountRepo.findId(op.getBAI()).orElseThrow(() -> new Exception("Ошибка, счет не найден"));
-        double delta = (op.getOperationType() == OperationType.EXPENSE) ? -op.getAmount() : +op.getAmount();
+        double delta = (op.getOperationType() == OperationType.EXPENSE) ? +op.getAmount() : -op.getAmount();
         workWithBalance(bankAccount, delta);
         Category newCategory = categoryRepo.findId(newCategoryId).orElseThrow(() -> new Exception("Такой категории не существует!"));
         OperationType newOpType = (newCategory.getType() == CategoryType.INCOME) ? OperationType.INCOME : OperationType.EXPENSE;
         try{
             Operation updated = operationFactory.create(opId, newOpType, op.getBAI(), newCategoryId, newAmount, newDate, newDescription);
             operationRepo.save(updated);
-            double newDelta = (op.getOperationType() == OperationType.INCOME) ? +op.getAmount() : -op.getAmount();
+            double newDelta = (op.getOperationType() == OperationType.INCOME) ? -op.getAmount() : +op.getAmount();
             workWithBalance(bankAccount, newDelta);
         }
          catch (Exception e) {

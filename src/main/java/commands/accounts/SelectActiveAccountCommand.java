@@ -18,7 +18,7 @@ public class SelectActiveAccountCommand implements Command {
     }
     @Override
     public String title() {
-        return "Выбрать активный счёт (по номеру)";
+        return "Выбрать активный счет (по номеру)";
     }
 
     @Override
