@@ -35,4 +35,8 @@ public class Operation {
         return operationType;
     }
 
+    public String getDescription(){
+        return description;
+    }
+
 }

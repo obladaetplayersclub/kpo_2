@@ -25,4 +25,12 @@ public class OperationFactory {
         }
         return new Operation(id, type, bankAccountId, amount, date, description, categoryId);
     }
+
+    public Operation create(OperationType type, UUID bankAccountId, UUID categoryId, double amount, LocalDate date, String description) throws Exception {
+        if (amount <= 0){
+            throw new Exception("Сумма операции должна быть больше 0");
+        }
+        UUID id = UUID.randomUUID();
+        return new Operation(id, type, bankAccountId, amount, date, description, categoryId);
+    }
 }

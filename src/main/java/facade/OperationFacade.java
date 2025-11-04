@@ -33,7 +33,7 @@ public class OperationFacade {
         if (category.getType() != CategoryType.INCOME){
             throw new Exception("Категория не является дохрдной");
         } else {
-            Operation op = operationFactory.create(OperationType.INCOME, amount, date, description);
+            Operation op = operationFactory.create(OperationType.INCOME, accountId, categoryId, amount, date, description);
             operationRepo.save(op);
             workWithBalance(bankAccount, +amount);
             return op.getId();
@@ -46,7 +46,7 @@ public class OperationFacade {
         if (category.getType() != CategoryType.EXPENSE){
             throw new Exception("Категория не является дохрдной");
         } else {
-            Operation op = operationFactory.create(OperationType.EXPENSE, amount, date, description);
+            Operation op = operationFactory.create(OperationType.EXPENSE, accountId, categoryId, amount, date, description);
             operationRepo.save(op);
             workWithBalance(bankAccount, -amount);
             return op.getId();
